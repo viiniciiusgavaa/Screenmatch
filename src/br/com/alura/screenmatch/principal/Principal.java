@@ -1,16 +1,18 @@
+package br.com.alura.screenmatch.principal;
+
 import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
 import br.com.alura.screenmatch.calculos.FiltroRecomendacao;
 import br.com.alura.screenmatch.modelos.Episodio;
 import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
 
+import java.util.ArrayList;
+
 class Principal {
     static void main(String[] args) {
 
-        Filme newFilme = new Filme();
-        newFilme.setNome("O Poderoso Chefao");
+        Filme newFilme = new Filme("O Poderoso Chefao", 1970);
         newFilme.setDuracaoEmMinutos(180);
-        newFilme.setAnoDeLancamento(1970);
         newFilme.exibeFichaTecnica();
         newFilme.avalia(8);
         newFilme.avalia(5);
@@ -20,9 +22,7 @@ class Principal {
         // System.out.println(newFilme.pegaMedia());
         // System.out.println("Duracao do filme:" + newFilme.getDuracaoEmMinutos());
 
-        Serie lost = new Serie ();
-        lost.setNome("Game Of Thrones");
-        lost.setAnoDeLancamento(2016);
+        Serie lost = new Serie ("Game Of Thrones", 2016);
         lost.exibeFichaTecnica();
         lost.setTemporadas(20);
         lost.setEpisodiosPorTemporada(8);
@@ -30,10 +30,12 @@ class Principal {
 
         //System.out.println("Duracao para maratonar lost:" + lost.getDuracaoEmMinutos());
 
-        Filme newFilme2 = new Filme();
-        newFilme2.setNome("Vingadores");
+        Filme newFilme2 = new Filme("Vingadores", 1970);
         newFilme2.setDuracaoEmMinutos(180);
-        newFilme2.setAnoDeLancamento(1970);
+
+        Filme newFilme3 = new Filme("Spider Man", 2026);
+        newFilme3.setDuracaoEmMinutos(160);
+        newFilme3.avalia(10);
 
         CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
         calculadora.inclui(newFilme);
@@ -52,6 +54,14 @@ class Principal {
         filtro.filtra(epsodio);
 
 
+        ArrayList<Filme> listaDeFilmes = new ArrayList<>();
+        listaDeFilmes.add(newFilme);
+        listaDeFilmes.add(newFilme2);
+        listaDeFilmes.add(newFilme3);
+
+        System.out.println("Tamanho da lista: " +listaDeFilmes.size());
+        System.out.println("Primeiro Filme: " +listaDeFilmes.get(0).getNome());
+        System.out.println(listaDeFilmes);
 
     }
 }
